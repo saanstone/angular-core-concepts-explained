@@ -1,0 +1,37 @@
+ng g c pages/men
+ng g m pages/men --routing
+ng g c pages/women
+ng g m pages/women --routing
+
+ng g c pages/men/tops
+ng g c pages/men/bottoms
+
+ng g c pages/women/sarees
+ng g c pages/women/kurtas
+
+ng g c pages/kids
+ng g c pages/common
+
+
+
+Questions:
+is routing path name case sensitive? Yes
+
+
+https://stackoverflow.com/questions/47524011/what-is-purpose-of-using-forroot-in-ngmodule
+There are two ways to create a routing module:
+
+RouterModule.forRoot(routes)
+creates a routing module that includes the router directives, the route configuration and the router service
+
+RouterModule.forChild(routes)
+creates a routing module that includes the router directives, the route configuration but not the router service. The RouterModule.forChild() method is needed when your application has multiple routing modules.
+
+Remember that the router service takes care of synchronization between our application state and the browser URL. Instantiating multiple router services that interact with the same browser URL would lead to issues, so it is essential that there’s only one instance of the router service in our application, no matter how many routing modules we import in our application.
+
+When we import a routing module that is created using RouterModule.forRoot(), Angular will instantiate the router service. When we import a routing module that’s created using RouterModule.forChild(), Angular will not instantiate the router service.
+
+Therefore we can only use RouterModule.forRoot() once and use RouterModule.forChild() multiple times for additional routing modules.
+
+
+https://www.freelancermap.com/blog/using-forroot-and-forchild-to-configure-modules-in-angular/

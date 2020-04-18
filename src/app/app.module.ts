@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { KidsComponent } from './pages/kids/kids.component';
+import { CommonComponent } from './pages/common/common.component';
 
 @NgModule({
   declarations: [ // custom components, directive, and pipes that belong to this modules
-    AppComponent
+    AppComponent, 
+    KidsComponent, 
+    CommonComponent
   ],
   imports: [ // set of ngModules available to this module
     BrowserModule,
