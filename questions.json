@@ -1,0 +1,5 @@
+{
+    "RouterModule" : [
+        "forRoot() vs forChild()"
+    ]
+}

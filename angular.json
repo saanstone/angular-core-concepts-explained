@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-core-concepts-explained"
+    }
+  },
+  "defaultProject": "angular-core-concepts-explained",
+  "cli": {
+    "analytics": false
+  }
 }
