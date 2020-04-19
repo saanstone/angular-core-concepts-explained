@@ -14,10 +14,6 @@ ng g c pages/common
 
 
 
-Questions:
-is routing path name case sensitive? Yes
-
-
 https://stackoverflow.com/questions/47524011/what-is-purpose-of-using-forroot-in-ngmodule
 There are two ways to create a routing module:
 

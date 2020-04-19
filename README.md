@@ -1,27 +1,57 @@
-# AngularCoreConceptsExplained
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+# Angular Router 
 
-## Development server
+```
+With single-page apps, users stay on a single page, but their view of that page changes depending on what the user wants to do.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To handle the navigation from one view to the next, you use the Angular router. The router enables navigation by interpreting a browser URL as an instruction to change the view(https://angular.io/guide/router)
+```
 
-## Code scaffolding
+# RouterModule - forRoot() vs forChild()
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| forRoot  | forChild |
+| --- | --- |
+| Declares the router directives | Declares the router directives |
+| Manages our route configuration | Manages our route configuration |
+| Register the router service | Does not register the router service |
+| Used once for the application | Used in feature modules|
 
-## Build
+## When should I use forRoot() and forChild()?
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+forRoot used in the top level component. forChild used in multiple feature modules(when application has multiple routing module)
 
-## Running unit tests
+## Why only one forRoot() and multiple forChild() used?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The concepts comes under singleton service. If the RouterModule didn’t have forRoot() then each feature module would instantiate a new Router instance, which would break the application as there can only be one Router. By using the forRoot() method, the root application module imports RouterModule.forRoot(...) and gets a Router, and all feature modules import RouterModule.forChild(...) which does not instantiate another Router.
 
-## Running end-to-end tests
+Instantiating multiple router services that interact with the same browser URL would lead to issues, so it is essential that there’s only one instance of the router service in our application, no matter how many routing modules we import in our application.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## What is the role of router service?
 
-## Further help
+A service that provides navigation and URL manipulation capabilities. It takes care of synchronization between our application state and the browser URL.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Router Driectives
+
+RouterOutlet and routerLink
+
+## Angular Routing Realted Commands
+
+| CLI Command | Description |
+| --- | --- |
+| ng new routing-app --routing | Create an angular application with routing(with AppRoutingModule where you can configure your routes) | 
+| ng g m modulename --routing | Create module with routing | 
+
+## Other Realted Questions
+1. Is routing path case sensitive?
+    - Yes
+2. What is difference between the attributes href and routerLink in Angular?
+3. router-outlet
+    -  This element informs Angular to update the application view with the component for the selected route.
+4. Route Order
+    - First match wins strategy
+    - More specific routes should be placed above
+    - Wildcard routes last
+5. Nested Routes/Child Routes
+    - Create routes that are relative to a component other than your root component
+6. path, component, redirectTo, pathMatch, children, loadChildren
